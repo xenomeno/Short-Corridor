@@ -13,6 +13,7 @@ For the example figure the Bellman equation can be used:
 where gamma in our case is 1, reward R(s) is always -1 and we have only 2 actions(LEFT and RIGHT). For the Epsilon-Greedy policy we have:
   
   Probability(RIGHT) = Epsilon / 2
+  
   Probability(LEFT) = 1 - Epsilon / 2
   
  If substitution is made for p = Epsilon / 2 and replace it in the Bellman equation we have
