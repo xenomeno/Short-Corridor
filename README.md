@@ -17,6 +17,8 @@ where gamma in our case is 1, reward R(s) is always -1 and we have only 2 action
   
  If substitution is made for p = Epsilon / 2 and replace it in the Bellman equation we have
  
+ V(0) = -1 + Probability(LEFT) * V(0) + Probability(RIGHT) * V(1)
+ 
  V(0) = -1 + (1 - p) * V(0) + p * V(1)
  
  since going LEFT leaves in the same start state and going RIGHT leads us to the next state(the reversed one). After rearrangement V(0) will be a function of V(0) using p. In similar fashion:
