@@ -4,7 +4,7 @@
 
 # Short Corridor
 
-This is reporoduction of the figures from the the book. Bitmap saving is implemented in pure Lua and is very slow!
+This is reporoduction of the figures from the book. Bitmap saving is implemented in pure Lua and is very slow!
 
 For the example figure the Bellman equation can be used:
 
@@ -77,7 +77,9 @@ The second attempt was actually realizing that this was due to rounding error. I
 
         Theta = [-1.4744389791664403, 1.47]
         
- And to wrap it up here is a comparison of the two Actor-Critic Policy Gradient algorithms(TD0 and Eligibility Traces) against themselves and the two REINFORCE algorithms. The TD0 is outperformed by the one with the traces which also is better than the REINFORCE algorithms:
+By using them there were no need for recalculating the Delta value between the W and Theta updates.
+        
+And to wrap it up here is a comparison of the two Actor-Critic Policy Gradient algorithms(TD0 and Eligibility Traces) against themselves and the two REINFORCE algorithms. The TD0 is outperformed by the one with the traces which also is better than the REINFORCE algorithms:
 
 ![](ShortCorridor/ShortCorridor_Figure_ActorCritic.bmp)
 
