@@ -73,6 +73,12 @@ The first attempt to fix this was a little change in the pseudo code given in th
 
 ![](REINFORCE_Baseline.bmp)
 
+The second attempt was actually realizing that this was due to rounding error. If Theta[2] was going to be rounded to 1.47 then using -1.47 was way too off from the appropirate value using the ln(p / (1 - p)) as an offset. The actual values should be:
+
+        Theta = [-1.4744389791664403, 1.47]
+        
+ And to wrap it up here is a comparison of the two Actor-Critic Policy Gradient algorithms(TD0 and Eligibility Traces) against themselves and the two REINFORCE algorithms. The TD0 is outperformed by the one with the traces which also is better than the REINFORCE algorithms:
+
 ![](ShortCorridor/ShortCorridor_Figure_ActorCritic.bmp)
 
 
