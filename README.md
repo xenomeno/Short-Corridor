@@ -34,14 +34,32 @@ where gamma in our case is 1, reward R(s) is always -1 and we have only 2 action
 
 ![](ShortCorridor/ShortCorridor_Example13_1.bmp)
 
+REINFORCE algorithm results are giving exactly the opposite other for alpha step sizes without any clue why:
+
 ![](ShortCorridor/ShortCorridor_Figure13_1.bmp)
 
+REINFORCE with Baseline results are correct though:
+
 ![](ShortCorridor/ShortCorridor_Figure13_2.bmp)
+
+I have some incosistencie with the initial values of Thetas. In the book they say they can be initialized with arbitrary values, e.g. 0. However if I do that I get very confusing results both for REINFORCE and REINFORCE with Baseline:
+
+![](ShortCorridor/Zero_Initial_Thetas_ShortCorridor_Figure13_1.bmp)
+
+![](ShortCorridor/Zero_Initial_Thetas_ShortCorridor_Figure13_2.bmp)
+
+To get the proper results I had to initialize Theta to correspond to Epsilon-Greedy policy. This can be achieved by taking into account that the estimates are:
+
+        Probability(LEFT)  = e^Theta[1] / (e^Theta[1] + e^Theta[2])
+        Probability(RIGHT) = e^Theta[2] / (e^Theta[1] + e^Theta[2])
+        
+Solving for example the second one(using p=Epsilon / 2) and the fact that Probability(RIGHT)=p and the two probabilites sum to 1:
+        
+        Theta[1] = ln(p / (1 - p)) + Theta[2]
+        
+So giving one of Theta[2] any value and using the offset above for Theta[1] produces the results from the book.
 
 ![](ShortCorridor/ShortCorridor_Figure_ActorCritic.bmp)
 
 ![](ShortCorridor/ShortCorridor_Figure13_2_Symmetric_SameTarget.bmp)
 
-![](ShortCorridor/Zero_Initial_Thetas_ShortCorridor_Figure13_1.bmp)
-
-![](ShortCorridor/Zero_Initial_Thetas_ShortCorridor_Figure13_2.bmp)
