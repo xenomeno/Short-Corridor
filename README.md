@@ -22,7 +22,7 @@ where gamma in our case is 1, reward R(s) is always -1 and we have only 2 action
  
  V(0) = -1 + p * V(0) + (1 - p) * V(1)
  
- since going LEFT leaves in the same start state and going RIGHT leads us to the next state(the reversed one). After rearrangement V(0) will be a function of V(0) using p. In similar fashion:
+ since going LEFT leaves us in the same start state and going RIGHT leads us to the next state(the reversed one). After rearrangement V(0) will be a function of V(1) using p. In similar fashion:
  
  V(1) = -1 + p * V(2) + (1 - p) * V(0)
  
