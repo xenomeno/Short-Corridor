@@ -53,7 +53,7 @@ To get the proper results I had to initialize Theta to correspond to Epsilon-Gre
         Probability(LEFT)  = e^Theta[1] / (e^Theta[1] + e^Theta[2])
         Probability(RIGHT) = e^Theta[2] / (e^Theta[1] + e^Theta[2])
         
-Solving for example the second one(using p=Epsilon / 2) and the fact that Probability(RIGHT)=p and the two probabilites sum to 1:
+Solving for example the second one(using p=Epsilon / 2) and the fact that Probability(RIGHT)=p and the two probabilities sum to 1:
         
         Theta[1] = ln(p / (1 - p)) + Theta[2]
         
