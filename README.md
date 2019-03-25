@@ -42,13 +42,13 @@ REINFORCE with Baseline results are correct though:
 
 ![](ShortCorridor/ShortCorridor_Figure13_2.bmp)
 
-I have some incosistencie with the initial values of Thetas. In the book they say they can be initialized with arbitrary values, e.g. 0. However if I do that I get very confusing results both for REINFORCE and REINFORCE with Baseline:
+I have some incosistencies with the initial values for Thetas. In the book they say they can be initialized with arbitrary values, e.g. 0. However if I do that I get very confusing results both for REINFORCE and REINFORCE with Baseline:
 
 ![](ShortCorridor/Zero_Initial_Thetas_ShortCorridor_Figure13_1.bmp)
 
 ![](ShortCorridor/Zero_Initial_Thetas_ShortCorridor_Figure13_2.bmp)
 
-To get the proper results I had to initialize Theta to correspond to Epsilon-Greedy policy. This can be achieved by taking into account that the estimates are:
+To get the proper results I had to initialize Theta to correspond to Epsilon-Greedy policy. This can be achieved by taking into account that using action preferences:
 
         Probability(LEFT)  = e^Theta[1] / (e^Theta[1] + e^Theta[2])
         Probability(RIGHT) = e^Theta[2] / (e^Theta[1] + e^Theta[2])
@@ -57,9 +57,23 @@ Solving for example the second one(using p=Epsilon / 2) and the fact that Probab
         
         Theta[1] = ln(p / (1 - p)) + Theta[2]
         
-So giving one of Theta[2] any value and using the offset above for Theta[1] produces the results from the book.
+So giving Theta[2] any value and using the offset above to calculate Theta[1] produces the results from the book. To give an explicit solution additional constrain may be set, e.g. 
+
+        Theta[1] = -Theta[2]
+
+Combining last two equations and say Epsilon=0.1 gives:
+        
+        Theta = [-1.47, 1.47]
+        
+This though produces some glitch in the REINFORCE with Baseline:
+
+![](ShortCorridor/ShortCorridor_Figure13_2_Symmetric_SameTarget.bmp)
+
+The first attempt to fix this was a little change in the pseudo code given in the book for the algorithm. Originally both the W and Theta vectors there are using the same Delta value to update themselves. However if after updating the W vector the Delta value is recalculated and the new one is used to update the Theta vector the glitch disappears:
+
+![](REINFORCE_Baseline.bmp)
 
 ![](ShortCorridor/ShortCorridor_Figure_ActorCritic.bmp)
 
-![](ShortCorridor/ShortCorridor_Figure13_2_Symmetric_SameTarget.bmp)
+
 
