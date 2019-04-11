@@ -34,7 +34,7 @@ where gamma in our case is 1, reward R(s) is always -1 and we have only 2 action
 
 ![](ShortCorridor/ShortCorridor_Example13_1.bmp)
 
-REINFORCE algorithm results are giving exactly the opposite other for alpha step sizes without any clue why:
+REINFORCE algorithm results are giving exactly the opposite order for the alpha step sizes without any clue why:
 
 ![](ShortCorridor/ShortCorridor_Figure13_1.bmp)
 
